@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costo de sitio web en AWS</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta property="og:title" content="Costo de sitio web en AWS" />
+    <meta property="og:description" content="Descubre cuánto cuesta alojar un sitio web estático en AWS utilizando Route 53, CloudFront y S3." />
+    <meta property="og:image" content="https://www.jctoala.link/images/mywebsite.png" />
+    <meta property="og:url" content="https://jctoala.link/" />
+    <meta property="og:type" content="article" />
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <section>
+            <h1>¿Cuánto cuesta crear y mantener un sitio web en AWS?</h1>
+            <p>En este artículo, exploraremos los costos asociados con la creación y mantenimiento de un sitio web estático utilizando Amazon Web Services (AWS). Nos enfocaremos en minimizar costos aprovechando la capa gratuita de AWS, ideal para alojar sitios pequeños dedicados a la publicación de contenido.</p>
+            <p>Para este proyecto, seguimos la documentación oficial de AWS. Puedes revisarla aquí: <a target="_blank" href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started-cloudfront-overview.html#getting-started-cloudfront-cloudfront-domain-name">Guía de inicio con Route 53 y CloudFront</a>.</p>
+        </section>
+        
+        <section>
+            <h2>Servicios utilizados</h2>
+            <p>Para este sitio web utilizamos los siguientes servicios de AWS:</p>
+            <ul>
+                <li>Amazon S3: almacenamiento del sitio web.</li>
+                <li>Amazon CloudFront: distribución de contenido para mejorar la velocidad de carga.</li>
+                <li>Amazon Route 53: configuración de DNS para dirigir el tráfico a CloudFront.</li>
+                <li>AWS Certificate Manager: gestión de certificados SSL para habilitar HTTPS.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Costos estimados</h2>
+            <p>Para calcular el costo del sitio web, consideramos los siguientes factores:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Costo en capa gratuita</th>
+                        <th>Costo adicional</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amazon S3</td>
+                        <td>5 GB de almacenamiento gratis</td>
+                        <td>$0.023 por GB/mes</td>
+                    </tr>
+                    <tr>
+                        <td>Solicitudes GET/PUT</td>
+                        <td>1 millón de solicitudes GET gratis</td>
+                        <td>$0.0004 por 1,000 solicitudes GET</td>
+                    </tr>
+                    <tr>
+                        <td>Transferencia de datos</td>
+                        <td>1 TB de salida gratis desde CloudFront</td>
+                        <td>Desde $0.08/GB según región</td>
+                    </tr>
+                    <tr>
+                        <td>Route 53 (Zona alojada)</td>
+                        <td>No incluido en la capa gratuita</td>
+                        <td>$0.50 por zona alojada/mes</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Costo anual estimado:</strong></p>
+            <ul>
+                <li>Amazon S3: gratis si se mantiene dentro de los 5 GB.</li>
+                <li>Amazon CloudFront: gratis si se mantiene dentro de la capa gratuita.</li>
+                <li>Amazon Route 53: $0.50/mes * 12 meses = $6.00/año.</li>
+            </ul>
+            <p>Total estimado anual: $6.00/año si se usa la capa gratuita de AWS.</p>
+            <p>Puedes calcular costos específicos con la <a target="_blank" href="https://calculator.aws/#/estimate?id=40f5b68bed5f7003b54db019ed2b80a9657fbbf9">calculadora de AWS</a>.</p>
+
+        </section>
+        
+        <section>
+            <h2>Arquitectura del sitio web</h2>
+            <p>La siguiente arquitectura muestra cómo está configurado el sitio web:</p>
+            <ol>
+                <li>El usuario ingresa la URL (jctoala.link o www.jctoala.link) en su navegador</li>
+                <li>Route 53 resuelve el dominio y redirige la solicitud a la distribución de CloudFront.</li>
+                <li>CloudFront recibe la solicitud y valida si el contenido está en la caché.</li>
+                <li>CloudFront redirige la solicitud al dominio correcto (www.jctoala.link).</li>
+                <li>El certificado SSL de ACM valida la conexión HTTPS para asegurar una comunicación cifrada.</li>
+                <li>CloudFront obtiene el contenido desde el bucket S3, que aloja los archivos del sitio web estático.</li>
+                <li>El contenido es devuelto al usuario a través de CloudFront, optimizando la entrega y asegurando HTTPS.</li>
+            </ol>
+            <img src="images/mywebsite.png" alt="Arquitectura del sitio web">
+        </section>
+        
+        <section class="preguntas-frecuentes">
+            <h2>Preguntas frecuentes</h2>
+            <div class="pregunta">
+              <h3>¿Cuánto cuesta mantener este sitio web en AWS anualmente?</h3>
+              <p>El costo estimado es $6.00/año utilizando la capa gratuita de AWS.</p>
+            </div>
+            <div class="pregunta">
+              <h3>¿Cuánta capacidad de almacenamiento tengo en S3?</h3>
+              <p>En la capa gratuita, AWS proporciona 5 GB de almacenamiento.</p>
+            </div>
+            <div class="pregunta">
+              <h3>¿Y si mi sitio web crece y recibe más tráfico?</h3>
+              <p>Si superas la capa gratuita, los costos dependen del uso adicional de almacenamiento y transferencia de datos.</p>
+            </div>
+          </section>
+        
+        <section>
+            <h2>Conclusión</h2>
+            <p>El costo de mantener un sitio web en AWS depende del uso de sus servicios. En este ejemplo, utilizando la capa gratuita de AWS, el costo mensual es de aproximadamente $0.50/mes por la zona alojada en Route 53, lo que equivale a $6.00/año. Sin embargo, si el sitio supera la capa gratuita debido a un mayor tráfico, almacenamiento adicional o más solicitudes a S3, el costo puede variar entre $1 y $3 al mes, dependiendo del uso específico de cada servicio. </p>
+            <p>Lee más detalles sobre la capa gratuita de AWS en <a target="_blank" href="https://aws.amazon.com/free/">AWS Free Tier</a></p>
+        </section>
+    </main>
+</body>
+</html>
