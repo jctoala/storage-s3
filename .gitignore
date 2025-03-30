@@ -5,5 +5,4 @@
 .terraform/
 .terraform.lock.hcl
 crash.log
-terraform.tfvars
 plan.out

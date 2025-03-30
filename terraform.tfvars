@@ -1,0 +1,5 @@
+ruta_local = "./app/"
+region = "us-east-1"
+profile = "jctoala-pua"
+group_tf_storage = "group-tf-storage"
+name_s3_bucket = "jctoala-s3-bucket-001"
