@@ -1,0 +1,5 @@
+ruta_local = "name of the local path to the terraform project"
+region = "region to create the resources"
+profile = "profile name to use in aws credentials"
+group_tf_storage = "name of the group to create the terraform storage"
+name_s3_bucket = "name of the s3 bucket to create"
