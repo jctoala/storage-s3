@@ -1,9 +1,3 @@
-provider "aws" {
-  # Configuration options
-  region = "${var.region}"
-  profile = "${var.profile}"
-}
-
 resource "aws_resourcegroups_group" "group_tf" {
   name = "${var.group_tf_storage}"
   description = "Group for Terraform resources storage"
